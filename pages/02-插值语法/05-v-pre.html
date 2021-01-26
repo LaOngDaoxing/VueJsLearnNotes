@@ -5,11 +5,15 @@
   <title>Vue指令05-v-pre</title>
 </head>
 <body>
-
 <div id="app">
   <h2 v-pre>{{message}}</h2>
 </div>
-
+<div>
+  <textarea style="border: 0;outline:none;height: 80px;width: 600px;">      
+    指令v-pre：
+    v-pre用于跳过这个元素和它子元素的编译过程，用于显示原本的Mustache语法。
+  </textarea>
+</div>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
   const app = new Vue({
