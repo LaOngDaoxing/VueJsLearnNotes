@@ -5,18 +5,23 @@
   <title>Vue指令03-v-html</title>
 </head>
 <body>
-
 <div id="app">
-  <div>{{link}}</div>
-  <div v-html="link"></div>
+  <div>{{linkUrl}}</div>
+  <div v-html="linkUrl"></div>
 </div>
-
+<div>
+  <textarea style="border: 0;outline:none;height: 80px;width: 600px;">      
+    指令v-html：
+    该指令后面往往会跟上一个string类型
+    会将string的html解析出来并且进行渲染
+  </textarea>
+</div>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
   const app = new Vue({
     el: '#app',
     data: {
-    	link: '<a href="http://www.baidu.com">百度一下</a>'
+    	linkUrl: '<a href="http://www.baidu.com">百度一下</a>'
     }
   })
 </script>
