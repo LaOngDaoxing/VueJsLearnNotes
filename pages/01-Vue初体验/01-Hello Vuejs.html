@@ -26,12 +26,12 @@
     // 定义数据
     data: {
       message: 'Hello Vuejs',
-      name: 'usernameIsLjx'
+      name: 'usernameIsLjx001'
     },
     mounted() {
     	setTimeout(() => {
-    		this.message = 'Hello Coderwhy'
-      }, 2000)
+    		this.message = 'Hello setTimeout定时器每隔3秒'+Math.random();
+      }, 3000)
     }
   })
 </script>
@@ -46,7 +46,7 @@
       5.将修改后的数据再次替换到div元素
   * 
     */
-  // 1.定义数据
+  /*// 1.定义数据
   let message = 'Hello Vuejs'
   // 2.获取DOM
   const appDom = document.querySelector('#app')
@@ -54,9 +54,9 @@
   appDom.innerText = message
   // 4.修改message,并且将新的message赋值到DOM中
   setTimeout(() => {
-	  message = 'Hello Coderwhy'
+	  message = 'Hello messageIsLjx002'
 	  appDom.innerText = message
-  }, 1000)
+  }, 1000)*/
 </script>
 </body>
 </html>
