@@ -18,7 +18,9 @@
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
   const app = new Vue({
+    // 类型：string | HTMLElement；作用：决定之后Vue实例会管理哪一个DOM（即用于挂载要管理的元素）。
     el: '#app',
+    // 类型：Object | Function （组件当中data必须是一个函数）；作用：Vue实例对应的数据对象。
     data: {
     	movies: ['星际穿越', '大话西游', '盗梦空间']
     }
