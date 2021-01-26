@@ -12,6 +12,7 @@
 <body>
 
 <div id="app">
+  <!--在Vue 解析之前，有一个属性v-cloak；在Vue 解析之后，没有一个属性v-cloak。解决未编译的Mustache标签，可能因为网络延迟而闪现问题。-->
   <h2 v-cloak>{{message}}</h2>
 </div>
 
