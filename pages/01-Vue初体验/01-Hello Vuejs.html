@@ -5,12 +5,39 @@
   <title>01-Hello Vuejs</title>
 </head>
 <body>
-
-<div id="app">{{message}}</div>
+  <div>
+    <div id="app">
+      <h2>{{message}}</h2>
+      <h1>{{name}}</h1>
+    </div>
+    {{message}}
+  </div>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
   /*
-  * @Description：一、编程范式: 命令式编程(面向过程)
+  * @Description：一、编程范式: 声明式/响应式编程（面向对象）
+  * @CodeSteps：
+  
+  * 
+    */
+  const app = new Vue({
+    // 用于挂载要管理的元素
+    el: '#app',
+    // 定义数据
+    data: {
+      message: 'Hello Vuejs',
+      name: 'usernameIsLjx'
+    },
+    mounted() {
+    	setTimeout(() => {
+    		this.message = 'Hello Coderwhy'
+      }, 2000)
+    }
+  })
+</script>
+<script>
+  /*
+  * @Description：二、编程范式: 命令式编程(面向过程)
   * @CodeSteps：
       1.创建div元素,设置id属性
       2.定义一个变量叫message
@@ -30,25 +57,6 @@
 	  message = 'Hello Coderwhy'
 	  appDom.innerText = message
   }, 1000)
-</script>
-<script>
-  /*
-  * @Description：二、编程范式: 声明式/响应式编程（面向对象）
-  * @CodeSteps：
-  
-  * 
-    */
-  const app = new Vue({
-    el: '#app',
-    data: {
-    	message: 'Hello Vuejs'
-    },
-    mounted() {
-    	setTimeout(() => {
-    		this.message = 'Hello Coderwhy'
-      }, 2000)
-    }
-  })
 </script>
 </body>
 </html>
