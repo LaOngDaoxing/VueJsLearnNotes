@@ -8,12 +8,14 @@
 
 <div id="app">
     <h2>当前计数: {{counter}}</h2>
+    <h3>1、计数器--加减</h3>
     <!--<button v-on:click="counter++">+</button>-->
     <!--<button v-on:click="counter--;">-</button>-->
-    <button v-on:click="add">+</button>
-    <button v-on:click="sub">-</button>
-    <!--下面是语法糖写法-->
-    <!--<button @click="sub">-</button>-->
+    <h3>2、计数器--加减，并在浏览器控制台打印日志</h3>
+    <!-- <button v-on:click="add">+</button>
+    <button v-on:click="sub">-</button> -->
+    <h3>3、计数器--加减，下面是语法糖/简写写法（v-on:的语法糖/简写是@）</h3>
+    <button @click="sub">-</button>
 </div>
 
 <script src="../../static/document/js/vue/vue.js"></script>
@@ -28,15 +30,22 @@
     new Vue()
 
     const app = new Vue({
+        // 用于挂载要管理的元素
         el: '#app',
+        // 定义数据
         data: obj,
+        // 方法
         methods: {
+            // add为函数类型
             add: function () {
                 console.log('add被执行');
+                // 注意需使用this.，其中this.指new 的当前Vue实例对象
                 this.counter++
             },
+            // sub为函数类型
             sub: function () {
                 console.log('sub被执行');
+                // 注意需使用this.，其中this.指new 的当前Vue实例对象
                 this.counter--
             }
         },
