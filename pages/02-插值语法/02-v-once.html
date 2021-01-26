@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>02-v-once</title>
+  <title>Vue指令02-v-once</title>
 </head>
 <body>
-
 <div id="app">
   <h2 v-once>{{message}}</h2>
   <h2>{{message}}</h2>
 </div>
-
+<div>
+  <textarea style="border: 0;outline:none;height: 80px;width: 600px;">      
+    v-once：
+    该指令后面不需要跟任何表达式(比如之前的v-for后面是由跟表达式的)。
+    该指令表示元素和组件(组件后面才会学习)只渲染一次，不会随着数据的改变而改变。
+  </textarea>
+</div>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
   const app = new Vue({
