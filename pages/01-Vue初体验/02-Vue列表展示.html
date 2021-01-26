@@ -8,6 +8,9 @@
 
 <div id="app">
   <ul>
+    <li v-for="item in movies">{{item}}</li>
+  </ul>
+  <ul>
     <li v-for="(item, index) in movies">{{index+1}}.{{item}}</li>
   </ul>
 </div>
