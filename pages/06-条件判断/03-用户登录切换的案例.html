@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>03-条件渲染案例</title>
+  <title>03-用户登录切换的案例</title>
 </head>
 <body>
-
+<p>代码写法一、</p>
 <div id="app">
   <div v-if="type==='username'">
     <label for="username">用户账号</label>
@@ -17,7 +17,19 @@
   </div>
   <button @click="btnClick">切换类型</button>
 </div>
-
+<hr>
+<p>代码写法二、</p>
+<div id="app2">
+  <span v-if="isUser">
+    <label for="username2">用户账号</label>
+    <input type="text" id="username2" placeholder="用户账号">
+  </span>
+  <span v-else>
+    <label for="email2">用户邮箱</label>
+    <input type="text" id="email2" placeholder="用户邮箱">
+  </span>
+  <button @click="isUser = !isUser">切换类型</button>
+</div>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
   const app = new Vue({
@@ -29,6 +41,12 @@
       btnClick() {
         this.type = this.type === 'username' ? 'email': 'username'
       }
+    }
+  })
+  const app2 = new Vue({
+    el: '#app2',
+    data: {
+      isUser: true
     }
   })
 </script>
