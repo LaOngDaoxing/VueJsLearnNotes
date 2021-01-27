@@ -43,8 +43,8 @@
       data: {
         active: "aaaaa",
         line:"bbbbb",
-      movies: ['星际穿越', '盗梦空间', '大话西游', '少年派的奇幻漂流'],
-      currentIndex: 0
+        movies: ['星际穿越', '盗梦空间', '大话西游', '少年派的奇幻漂流'],
+        currentIndex: 0
       },
       methods: {
         // getClasses方法的写法有》getClasses(){} 或 getClasses:function(){}
@@ -54,9 +54,9 @@
         getClasses2() {
           return [this.active, this.line]
         },
-    	itemClick:function(index) {
-    		this.currentIndex = index
-      }
+        itemClick:function(index) {
+          this.currentIndex = index
+        }
       }
     })
 </script>
