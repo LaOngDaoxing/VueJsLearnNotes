@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>03-vue案例-计数器</title>
 </head>
 <body>
 
@@ -12,14 +12,18 @@
     <button v-on:click="counter++">+</button>
     <button v-on:click="counter--;">-</button>
     <hr>
-    <h3>2、计数器--加减，并在浏览器控制台打印日志</h3>
+    <h3>2、计数器--加减，并在浏览器控制台打印日志。</h3>
     <button v-on:click="add">+</button>
     <button v-on:click="sub">-</button>
     <hr>
     <h3>3、计数器--加减，下面是语法糖/简写写法（v-on:的语法糖/简写是@）</h3>
     <button @click="sub">-</button>
 </div>
-
+<hr>
+<textarea style="border: 0;outline:none;height: 80px;width: 600px;">
+    注解：
+    标签上绑定的函数，理论上格式都为functionName()；只是此处v-on:click="functionName"被省略了()
+</textarea>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
     // 语法糖: 简写
