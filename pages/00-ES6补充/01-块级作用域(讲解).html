@@ -13,37 +13,43 @@
 <button>按钮5</button>
 
 <script>
-  // ES5中的var是没有块级作用域的(if/for)
-  // ES6中的let是由块级作用的(if/for)
+  /**
+   * @Description：第一个变量演示
+   * @Remark：
+          变量作用域: 变量在什么范围内是可用
+          ES5中的var没有块级作用域的(if/for)，因此var必须借助于function的作用域来解决应用外面变量的问题。
+          ES6中的var没有块级作用域的(if/for)；新增let有块级作用的(if/for)。
+   * 
+   */
+  {
+    var nickname = '昵称';
+    console.log("1.1_块内打印昵称--"+nickname);
+  }
+  console.log("1.2_块外打印昵称--"+nickname);
 
-  // ES5之前因为if和for都没有块级作用域的概念, 所以在很多时候, 我们都必须借助于function的作用域来解决应用外面变量的问题.
-  // ES6中,加入了let, let它是有if和for的块级作用域.
-  // 1.变量作用域: 变量在什么范围内是可用.
-  // {
-  //   var name = 'why';
-  //   console.log(name);
-  // }
-  // console.log(name);
+  /**
+   * @Description：第二个变量演示
+   * @showBug：
+            没有块级作用域引起的问题: if的块级
+   */ 
+  var nameFun;
+  if (true) {
+    var realname = '真实姓名';
+    nameFun = function () {
+      console.log(realname);
+    }
+    // nameFun()
+  }
+  realname = 'kobe'
+  nameFun()
+  // console.log(realname);
 
-  // 2.没有块级作用域引起的问题: if的块级
-  // var func;
-  // if (true) {
-  //   var name = 'why';
-  //   func = function () {
-  //     console.log(name);
-  //   }
-  //   // func()
-  // }
-  // name = 'kobe'
-  // func()
-  // // console.log(name);
-
-  var name = 'why'
+  var realname = 'why'
   function abc(bbb) { // bbb = 'why'
     console.log(bbb);
   }
-  abc(name)
-  name = 'kobe'
+  abc(realname)
+  realname = 'kobe'
 
   // 3.没有块级作用域引起的问题: for的块级
   // 为什么闭包可以解决问题: 函数是一个作用域.
