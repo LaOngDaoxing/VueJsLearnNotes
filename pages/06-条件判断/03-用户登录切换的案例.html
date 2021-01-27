@@ -32,6 +32,12 @@
 </div>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
+  /**
+   * @Description：
+   * @Bug：Vue在进行DOM渲染时，出于性能考虑，会尽可能的复用 虚拟DOM/内存 中已经存在的元素，而不是重新创建新的元素。
+          示例：在上面的案例中，点击切换类型后，input已输入的内容值被重复利用。
+          解决方案：可以给对应的input添加不同的key。
+    */ 
   //
   const app = new Vue({
     el: '#app',
