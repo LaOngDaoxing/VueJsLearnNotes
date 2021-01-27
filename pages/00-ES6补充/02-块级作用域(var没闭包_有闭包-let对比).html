@@ -62,7 +62,7 @@
     })
   }
 
-  //———————————— 三.情况2: var类型使用闭包 ————————————
+  //———————————— 三.情况2: var类型使用闭包(正确的方式) ————————————
   var btns = document.getElementsByTagName('button');
   for (var i=0; i<btns.length; i++) {
     (function (i) { // 0
@@ -91,7 +91,7 @@
     })
   }(2)
 
-  //———————————— 三.情况3：ES6中的let ————————————
+  //———————————— 三.情况3：ES6中的let(正确的方式)--推荐 ————————————
   const btns = document.getElementsByTagName('button')
   for (let i = 0; i < btns.length; i++) {
     btns[i].addEventListener('click', function () {
