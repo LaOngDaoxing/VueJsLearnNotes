@@ -7,12 +7,18 @@
 <body>
 
 <div id="app">
-  <h2>{{fullName}}</h2>
-  <h2>{{fullName}}</h2>
-  <h2>{{fullName}}</h2>
+  <!--1、直接拼接：语法过于繁琐-->
+  <h2>{{firstName}} {{lastName}}</h2>
+  <hr>
+  <!--2、通过定义methods-->
   <h2>{{getFullName()}}</h2>
   <h2>{{getFullName()}}</h2>
   <h2>{{getFullName()}}</h2>
+  <hr>
+  <!--3、通过computed，缓存-->
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
 </div>
 
 <script src="../../static/document/js/vue/vue.js"></script>
