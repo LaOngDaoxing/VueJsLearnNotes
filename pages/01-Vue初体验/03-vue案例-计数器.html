@@ -9,11 +9,13 @@
 <div id="app">
     <h2>当前计数: {{counter}}</h2>
     <h3>1、计数器--加减</h3>
-    <!--<button v-on:click="counter++">+</button>-->
-    <!--<button v-on:click="counter--;">-</button>-->
+    <button v-on:click="counter++">+</button>
+    <button v-on:click="counter--;">-</button>
+    <hr>
     <h3>2、计数器--加减，并在浏览器控制台打印日志</h3>
-    <!-- <button v-on:click="add">+</button>
-    <button v-on:click="sub">-</button> -->
+    <button v-on:click="add">+</button>
+    <button v-on:click="sub">-</button>
+    <hr>
     <h3>3、计数器--加减，下面是语法糖/简写写法（v-on:的语法糖/简写是@）</h3>
     <button @click="sub">-</button>
 </div>
