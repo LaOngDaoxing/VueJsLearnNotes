@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>01-块级作用域(讲解)</title>
 </head>
 <body>
 
@@ -70,7 +70,7 @@
     // 使用函数闭包，否则console.log(是for遍历i++后的i)
     (function (num) { 
       firstBtns[i].addEventListener('click', function () {
-        console.log('第' + (num+1) + '个按钮被点击');
+        console.log('var--第' + num + '个按钮被点击');
       })
     })(i)
   }
@@ -78,72 +78,9 @@
   const secondBtns = document.getElementsByTagName('button')
   for (let i = 0; i < secondBtns.length; i++) {
     secondBtns[i].addEventListener('click', function () {
-      console.log('第' +(i+1) + '个按钮被点击');
+      console.log('let--第' +i + '个按钮被点击');
     })
   }
-  // ES5
-  // var i = 5
-  // {
-  //   btns[i].addEventListener('click', function () {
-  //   console.log('第' + i + '个按钮被点击');
-  // })
-  // }
-  //
-  // {
-  //   btns[i].addEventListener('click', function () {
-  //     console.log('第' + i + '个按钮被点击');
-  //   })
-  // }
-  //
-  //
-  // {
-  //   btns[i].addEventListener('click', function () {
-  //     console.log('第' + i + '个按钮被点击');
-  //   })
-  // }
-  //
-  //
-  // {
-  //   btns[i].addEventListener('click', function () {
-  //     console.log('第' + i + '个按钮被点击');
-  //   })
-  // }
-  //
-  // {
-  //   btns[i].addEventListener('click', function () {
-  //     console.log('第' + i + '个按钮被点击');
-  //   })
-  // }
-  //
-  // // ES6
-  // { i = 0
-  //   btns[i].addEventListener('click', function () {
-  //     console.log('第' + i + '个按钮被点击');
-  //   })
-  // }
-  //
-  // { i = 1
-  //   btns[i].addEventListener('click', function () {
-  //     console.log('第' + i + '个按钮被点击');
-  //   })
-  // }
-  // { i = 2
-  //   btns[i].addEventListener('click', function () {
-  //     console.log('第' + i + '个按钮被点击');
-  //   })
-  // }
-  // { i = 3
-  //   btns[i].addEventListener('click', function () {
-  //     console.log('第' + i + '个按钮被点击');
-  //   })
-  // }
-  // { i = 4
-  //   btns[i].addEventListener('click', function () {
-  //     console.log('第' + i + '个按钮被点击');
-  //   })
-  // }
-
 </script>
-
 </body>
 </html>
