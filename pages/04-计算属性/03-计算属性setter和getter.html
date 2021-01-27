@@ -19,6 +19,32 @@
       lastName: 'Bryant'
     },
     computed: {
+      /**
+       * @Description： 计算属性一般没有set方法
+       * @Remark：当前计算属性中的fullName，写法由复杂到简单的演示过程
+                  // 写法1
+                  fullName: {
+                    set(newValue) {
+                      const names = newValue.split(' ')
+                      this.firstName = names[0]
+                      this.lastName = names[1]
+                    },
+                    get() {
+                      return this.firstName + ' ' + this.lastName
+                    }
+                  }
+                  // 写法2
+                  fullName: {
+                    get() {
+                      return this.firstName + ' ' + this.lastName
+                    }
+                  }
+                  // 写法3
+                  fullName: {
+                      return this.firstName + ' ' + this.lastName
+                  }
+       * 
+        */
       fullName: {
         set(newValue) {
           const names = newValue.split(' ')

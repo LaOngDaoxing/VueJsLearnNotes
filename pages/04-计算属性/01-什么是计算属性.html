@@ -8,6 +8,7 @@
 
 <div id="app">
   <h2>{{firstName}} {{lastName}}</h2>
+  <h2>{{getFullName()}}</h2>
   <h2>{{fullName}}</h2>
 </div>
 
@@ -19,16 +20,17 @@
       firstName: 'Kobe',
       lastName: 'Bryant'
     },
+    // computed: 计算属性()
     computed: {
       fullName() {
         return this.firstName + ' ' + this.lastName
       }
     },
-    // methods: {
-    //   fullName() {
-    //     return this.firstName + ' ' + this.lastName
-    //   }
-    // }
+    methods: {
+      getFullName() {
+        return this.firstName + ' ' + this.lastName
+      }
+    }
   })
 </script>
 
