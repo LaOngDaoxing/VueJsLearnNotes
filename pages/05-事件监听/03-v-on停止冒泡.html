@@ -15,7 +15,15 @@
   <input type="text" @keyup.13="onEnter">
   <button @click.once="btnClick"></button>
 </div>
-
+<textarea style="border: 0;outline:none;height: 280px;width: 600px;">
+  修饰符                    作用                      示例
+  @click.stop=""          停止冒泡
+  @click.prevent=""       组织默认行为              阻止点击submit按钮的默认提交
+  @submit.prevent         阻止默认行为，没有表达式
+  @keyup.enter            监听键盘的enter键
+  @click.native=""        监听组件根元素的原生事件
+  @click.once=""          只触发一次回调
+</textarea>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
   const app = new Vue({

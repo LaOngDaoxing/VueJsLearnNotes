@@ -8,20 +8,24 @@
 
 <div id="app">
   <h2>点击次数: {{counter}}</h2>
-  <!--情况一: 方法没有参数-->
+  <!--情况一: 如果被调用方法没有参数-->
   <button @click="btnClick1">按钮1</button>
   <button @click="btnClick1()">按钮1</button>
 
-  <!--情况二: 如果方法有参数-->
+  <!--情况二: 如果被调用方法有参数-->
   <!--1.调用时不传入参数,会默认将event作为第一个参数传入-->
   <button @click="btnClick2">按钮2</button>
-  <!--2.调用时不传入参数,那么参数为undefined-->
+  <!--2.调用时不传入参数,那么被调用方法中打印的参数为undefined-->
   <button @click="btnClick2()">按钮2</button>
 
-  <!--情况三: 如果方法有参数,并且希望传入event-->
+  <!--情况三: 如果被调用方法有多个参数, $event（注解：手动获取到浏览器参数的event对象）-->
   <button @click="btnClick3(10, $event)">按钮3</button>
 </div>
-
+<hr>
+<textarea style="border: 0;outline:none;height: 80px;width: 600px;">
+  注解：
+  标签上绑定的函数，理论上格式都为functionName()；只是此处v-on:click="functionName"被省略了()。
+</textarea>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
   const app = new Vue({
@@ -33,8 +37,8 @@
       btnClick1() {
         console.log('按钮1被点击');
       },
-      btnClick2(payload) {
-        console.log('按钮2被点击', payload);
+      btnClick2(event) {
+        console.log('按钮2被点击', event);
       },
       btnClick3(num, event) {
         console.log('按钮3被点击', num, event);
