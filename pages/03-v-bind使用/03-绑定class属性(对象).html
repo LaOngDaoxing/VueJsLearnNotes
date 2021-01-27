@@ -7,6 +7,9 @@
     .active {
       color: red;
     }
+    .aaa {
+      color: red;
+    }
     .line {
       text-decoration: underline;
     }
@@ -19,20 +22,18 @@
 
 <div id="app">
   <!--一、-->
-  <h2 :class="active">直接动态绑定css的class属性名</h2>
-  <h2 :class="activeData">动态绑定data中的activeData值</h2>
+  <h2 class="active">直接动态绑定css的class属性名</h2>
+  <h2 :class="aaa">动态绑定data中的activeData值</h2>
   <hr>
   <!--二、-->
   <h2 :class="{'active': isActive}">你好啊,王红元</h2>
-  <h2 :class="{ active: isActive,line: isLine}">你好啊,王红元</h2>
+  <h2 :class="{active: isActive,line: isLine}">你好啊,王红元</h2>
   <h2 class="large" :class="{active: isActive,line: isLine,}">你好啊,王红元</h2>
   <h2 class="large" :class="getClasses()">你好啊,王红元</h2>
   <hr>
   <!--三、-->
   <ul>
-    <li v-for="(item, index) in movies"
-        :class="{active: index===currentIndex}"
-        @click="itemClick(index)">
+    <li v-for="(item, index) in movies" :class="{active: index===currentIndex}" @click="itemClick(index)">
       {{item}}
     </li>
   </ul>
@@ -43,17 +44,17 @@
   const app = new Vue({
     el: '#app',
     data: {
-      activeData:active,
+      aaa:"aaa",
       isActive: true,
       isLine: true,
       movies: ['星际穿越', '盗梦空间', '大话西游', '少年派的奇幻漂流'],
       currentIndex: 0
     },
     methods: {
-    	getClasses() {
+    	getClasses:function() {
     		return {line: this.isLine, active: this.isActive}
       },
-    	itemClick(index) {
+    	itemClick:function(index) {
     		this.currentIndex = index
       }  
     }
