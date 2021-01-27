@@ -15,10 +15,11 @@
 <script>
   /**
    * @Description：第一个变量演示
+   * @Question：为什么闭包可以解决问题？因为函数是一个作用域。
    * @Remark：
           变量作用域: 变量在什么范围内是可用
-          ES5中的var没有块级作用域的(if/for)，因此var必须借助于function的作用域来解决应用外面变量的问题。
-          ES6中的var没有块级作用域的(if/for)；新增let有块级作用的(if/for)。
+          ES5中的var没有块级作用域的(if/for)，因此var必须借助于 函数作用域function(传参) 来解决应用外面变量的问题。
+          ES6中的var没有块级作用域的(if/for)，因此var必须借助于 函数作用域function(传参) 来解决应用外面变量的问题；新增let有块级作用的(if/for)。
    * 
    */
   {
@@ -30,42 +31,52 @@
   /**
    * @Description：第二个变量演示
    * @showBug：
-            没有块级作用域引起的问题: if的块级
+            没有块级作用域引起的问题: if的块级。
+            line45调用nameFun()期待打印结果为'真实姓名'；但由于line44重新赋值，导致打印结果为'星星3号。
    */ 
   var nameFun;
   if (true) {
     var realname = '真实姓名';
     nameFun = function () {
-      console.log(realname);
+      console.log("2.1_nameFun方法内部打印--"+realname);
     }
-    // nameFun()
+    nameFun();
   }
-  realname = 'kobe'
-  nameFun()
-  // console.log(realname);
+  realname = '星星3号';
+  nameFun();
 
-  var realname = 'why'
-  function abc(bbb) { // bbb = 'why'
-    console.log(bbb);
+  // var没有块级作用域的(if/for)，因此var必须借助于 函数作用域function(传参) 来解决应用外面变量的问题
+  var realname = '李宁'
+  function abc(bbb) {
+    console.log("2.2_nameFun方法传参，内部打印--"+bbb);
   }
   abc(realname)
   realname = 'kobe'
 
-  // 3.没有块级作用域引起的问题: for的块级
-  // 为什么闭包可以解决问题: 函数是一个作用域.
-  // var btns = document.getElementsByTagName('button');
-  // for (var i=0; i<btns.length; i++) {
-  //   (function (num) { // 0
-  //     btns[i].addEventListener('click', function () {
-  //       console.log('第' + num + '个按钮被点击');
-  //     })
-  //   })(i)
-  // }
-
-  const btns = document.getElementsByTagName('button')
-  for (let i = 0; i < btns.length; i++) {
-    btns[i].addEventListener('click', function () {
-      console.log('第' + i + '个按钮被点击');
+  /**
+   * @Description：第三个变量演示
+   * @Question：为什么函数闭包可以解决问题？因为函数是一个作用域。
+   * @showBug：
+            没有块级作用域引起的问题: for的块级。
+   * @Remark：
+            (function(可自定义函数内部参数名i或cusNum){
+              console.log(打印的是--可自定义函数内部参数名i或cusNum);
+            })(同外部传入的参数名i)          
+   */ 
+  var firstBtns = document.getElementsByTagName('button');
+  for (var i=0; i<firstBtns.length; i++) {
+    // 使用函数闭包，否则console.log(是for遍历i++后的i)
+    (function (num) { 
+      firstBtns[i].addEventListener('click', function () {
+        console.log('第' + (num+1) + '个按钮被点击');
+      })
+    })(i)
+  }
+  // ES6中新增let有块级作用的(if/for)
+  const secondBtns = document.getElementsByTagName('button')
+  for (let i = 0; i < secondBtns.length; i++) {
+    secondBtns[i].addEventListener('click', function () {
+      console.log('第' +(i+1) + '个按钮被点击');
     })
   }
   // ES5
