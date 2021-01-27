@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>06-绑定class属性(数组)</title>
+  <title>06-动态绑定class属性(数组)</title>
   <style>
     .active {
       color: red;
@@ -22,10 +22,10 @@
 <div id="app">
   <h2 :class="['active', 'line']">今天天气不错</h2>
   <h2 class="large" :class="['active', 'line']">今天天气不错</h2>
+  <h2 class="large" :class="[active, line]">今天天气不错</h2>
   <!--标签上绑定的函数，理论上格式都为functionName()-->
-  <h2 class="large" :class="getClasses()">今天天气不错</h2>
-  <!--标签上绑定的函数，理论上格式都为functionName()；只是此处被省略了()-->
-  <button v-on:click="btnClick"></button>
+  <h2 class="large" :class="getClasses1()">今天天气不错</h2>
+  <h2 class="large" :class="getClasses2()">今天天气不错</h2>
 </div>
 
 <script src="../../static/document/js/vue/vue.js"></script>
@@ -33,15 +33,16 @@
     let vm = new Vue({
       el: '#app',
       data: {
-        isActive: true
+        active: "aaaaa",
+        line:"bbbbb"
       },
       methods: {
         // getClasses方法的写法有》getClasses(){} 或 getClasses:function(){}
-        getClasses() {
+        getClasses1() {
           return ['active', 'line']
         },
-        btnClick:function(){
-          this.isActive= !this.isActive
+        getClasses2() {
+          return [this.active, this.line]
         }
       }
     })
