@@ -7,14 +7,14 @@
 <body>
 <p>代码写法一、</p>
 <div id="app">
-  <div v-if="type==='username'">
+  <span v-if="type==='username'">
     <label for="username">用户账号</label>
-    <input type="text" id="username" placeholder="用户账号" key="username">
-  </div>
-  <div v-if="type==='email'">
+    <input type="text" id="username" placeholder="用户账号" key="username-input">
+  </span>
+  <span v-if="type==='email'">
     <label for="email">用户邮箱</label>
-    <input type="text" id="email" placeholder="用户邮箱" key="email">
-  </div>
+    <input type="text" id="email" placeholder="用户邮箱" key="email-input">
+  </span>
   <button @click="btnClick">切换类型</button>
 </div>
 <hr>
@@ -22,11 +22,11 @@
 <div id="app2">
   <span v-if="isUser">
     <label for="username2">用户账号</label>
-    <input type="text" id="username2" placeholder="用户账号">
+    <input type="text" id="username2" placeholder="用户账号" key="username-input">
   </span>
   <span v-else>
     <label for="email2">用户邮箱</label>
-    <input type="text" id="email2" placeholder="用户邮箱">
+    <input type="text" id="email2" placeholder="用户邮箱" key="email-input">
   </span>
   <button @click="isUser = !isUser">切换类型</button>
 </div>
@@ -34,8 +34,8 @@
 <script>
   /**
    * @Description：
-   * @Bug：Vue在进行DOM渲染时，出于性能考虑，会尽可能的复用 虚拟DOM/内存 中已经存在的元素，而不是重新创建新的元素。
-          示例：在上面的案例中，点击切换类型后，input已输入的内容值被重复利用。
+   * @Bug：Vue在进行DOM渲染时，出于性能考虑，会尽可能的复用 虚拟DOM/内存 中已经存在的标签元素，而不是重新创建新的标签元素。
+          示例：在上面的案例中，点击切换类型后，已存在标签元素在比对替换属性不同值后，其他属性值将被直接复用。
           解决方案：可以给对应的input添加不同的key。
     */ 
   //
