@@ -72,7 +72,7 @@
     }) (i)
   }
 
-  i = 100000000 //不管外面的i如何改变，function(){对函数作用域里面的i没有影响}
+  i = 100000000 //不管外面的i如何改变，function(){对函数作用域里面的i没有影响}；当触发点击事件时，回调并使用的i是函数作用域里面的i。
   (function (i) { // i = 0
     btns[i].addEventListener('click', function () {
       console.log('第' + i + '个按钮被点击');
@@ -99,7 +99,7 @@
     })
   }
 
-  i = 10000000  //不管外面的i如何改变，{对块作用域里面的i没有影响}
+  i = 10000000  //不管外面的i如何改变，{对块作用域里面的i没有影响}；当触发点击事件时，回调并使用的i是块作用域里面的i。
   { i = 0
     btns[i].addEventListener('click', function () {
       console.log('第' + i + '个按钮被点击');
