@@ -33,13 +33,6 @@
   <h2 class="large" :class="getClasses()">你好啊,王红元</h2>
   <!--标签上绑定的函数，理论上格式都为functionName()；只是此处被省略了()-->
   <button v-on:click="btnClick">按钮</button>
-  <hr>
-  <!--三、-->
-  <ul>
-    <li v-for="(item, index) in movies" :class="{active: index===currentIndex}" @click="itemClick(index)">
-      {{item}}
-    </li>
-  </ul>
 </div>
 
 <script src="../../static/document/js/vue/vue.js"></script>
@@ -49,9 +42,7 @@
     data: {
       aaa:"aaa",
       isActive: true,
-      isLine: true,
-      movies: ['星际穿越', '盗梦空间', '大话西游', '少年派的奇幻漂流'],
-      currentIndex: 0
+      isLine: true
     },
     methods: {
       // getClasses方法的写法有》getClasses(){} 或 getClasses:function(){}
@@ -60,9 +51,6 @@
       },
       btnClick:function(){
         this.isActive= !this.isActive
-      },
-    	itemClick:function(index) {
-    		this.currentIndex = index
       }  
     }
   })

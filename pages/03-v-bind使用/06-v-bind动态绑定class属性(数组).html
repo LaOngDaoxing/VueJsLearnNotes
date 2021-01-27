@@ -13,19 +13,27 @@
     }
 
     .large {
-      font-size: 50px;
+      font-size: 8px;
     }
   </style>
 </head>
 <body>
 
 <div id="app">
+  <!--一、-->
   <h2 :class="['active', 'line']">今天天气不错</h2>
   <h2 class="large" :class="['active', 'line']">今天天气不错</h2>
   <h2 class="large" :class="[active, line]">今天天气不错</h2>
   <!--标签上绑定的函数，理论上格式都为functionName()-->
   <h2 class="large" :class="getClasses1()">今天天气不错</h2>
   <h2 class="large" :class="getClasses2()">今天天气不错</h2>
+  <hr>
+  <!--二、-->
+  <ul>
+    <li v-for="(item, index) in movies" :class="{active: index===currentIndex}" @click="itemClick(index)">
+      {{item}}
+    </li>
+  </ul>
 </div>
 
 <script src="../../static/document/js/vue/vue.js"></script>
@@ -34,7 +42,9 @@
       el: '#app',
       data: {
         active: "aaaaa",
-        line:"bbbbb"
+        line:"bbbbb",
+      movies: ['星际穿越', '盗梦空间', '大话西游', '少年派的奇幻漂流'],
+      currentIndex: 0
       },
       methods: {
         // getClasses方法的写法有》getClasses(){} 或 getClasses:function(){}
@@ -43,7 +53,10 @@
         },
         getClasses2() {
           return [this.active, this.line]
-        }
+        },
+    	itemClick:function(index) {
+    		this.currentIndex = index
+      }
       }
     })
 </script>
