@@ -3,12 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>07-绑定style属性(对象)</title>
+  <style>
+    .myCusClas {
+      font-size: 50px;
+      color: red;
+    }
+  </style>
 </head>
 <body>
 
 <div id="app">
+  <!--
+    1、语法格式
+    <h2 :style="{key(属性名): value(属性值)}">{{message}}</h2>
+    2、示例
+      （1）'50px'必须加上单引号, 否则是当做一个变量去解析
+      <h2 :style="{fontSize: '50px'}">{{message}}</h2>
+      （2）finalSize当成一个变量使用
+      <h2 :style="{fontSize: finalSize}">{{message}}</h2>
+  -->
+  <h2 :style="{fontSize: finalSize + 'px', backgroundColor: finalColor}">{{message}}</h2>
   <h2 :style="{color: dColor, fontSize: dFontSize + 'px'}">今天天气不错</h2>
   <h2 :style="objStyle">今天天气不错</h2>
+  <h2 :style="getStyles()">{{message}}</h2>
 </div>
 
 <script src="../../static/document/js/vue/vue.js"></script>
@@ -17,11 +34,18 @@
         el: '#app',
         data: {
           message: '你好啊,李银河',
+          finalSize: 100,
+          finalColor: 'red',
           dColor: 'red',
           dFontSize: 50,
           objStyle: {
             color: 'red',
             fontSize: '60px'
+          }
+        },
+        methods: {
+          getStyles: function () {
+            return {fontSize: this.finalSize + 'px', backgroundColor: this.finalColor}
           }
         }
     })
