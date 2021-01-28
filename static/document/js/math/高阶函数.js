@@ -4,12 +4,17 @@
                   （3）需求:将所有new2Nums数字相加,得到最终的结果
  * @Use高阶函数：
             1、数组Arr.filter(第一个参数是回调函数)
-              其回调函数有一个要求: 必须返回一个boolean值
-              true: 当返回true时, 函数内部会自动将这次回调的n加入到新的数组中
-              false: 当返回false时, 函数内部会过滤掉这次的n
+                filter的的第一个参数回调函数(){
+                  return 必须返回一个boolean值
+                }
+                true: 当返回true时, 函数内部会自动将这次回调的n加入到新的数组中
+                false: 当返回false时, 函数内部会过滤掉这次的n
             2、数组Arr.map(第一个参数是回调函数)
             3、数组Arr.reduce(第一个参数是回调函数,第二个参数一般初始值为0)
-              作用：对数组中所有的内容进行汇总
+                reduce的第一个参数回调函数(preValue, n){
+                  return 的结果赋给preValue
+                }
+                作用：对数组中所有的内容进行汇总
  *@代码示例：              
       // numsArr[本次]=n
       let newNumArr = oldNumArr.filter(n => n < 100).map(n => n * 2).reduce((pre, n) => pre + n);
