@@ -7,14 +7,14 @@
 <body>
 
 <div id="app">
-  <!--1.checkbox单选框-->
-  <!--<label for="agree">-->
-    <!--<input type="checkbox" id="agree" v-model="isAgree">同意协议-->
-  <!--</label>-->
-  <!--<h2>您选择的是: {{isAgree}}</h2>-->
-  <!--<button :disabled="!isAgree">下一步</button>-->
-
-  <!--2.checkbox多选框-->
+  <p>1.checkbox单选框</p>
+  <label for="agree">
+    <input type="checkbox" id="agree" v-model="isAgree">同意协议
+  </label>
+  <h2>您选择的是: {{isAgree}}</h2>
+  <button :disabled="!isAgree">下一步</button>
+  <hr>
+  <p>2.checkbox多选框</p>
   <input type="checkbox" value="篮球" v-model="hobbies">篮球
   <input type="checkbox" value="足球" v-model="hobbies">足球
   <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
@@ -32,8 +32,10 @@
     el: '#app',
     data: {
       message: '你好啊',
-      isAgree: false, // 单选框
-      hobbies: [], // 多选框,
+      // 单选框 boolean类型
+      isAgree: false, 
+      // 多选框 数组类型
+      hobbies: [], 
       originHobbies: ['篮球', '足球', '乒乓球', '羽毛球', '台球', '高尔夫球']
     }
   })
