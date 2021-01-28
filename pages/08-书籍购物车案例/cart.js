@@ -33,6 +33,11 @@ const app = new Vue({
     ]
   },
   methods: {
+    /**
+     * @Description：由于需要使用过滤器filters，此方法getFinalPrice(price)弃用
+     * @UseFun：
+              toFixed(2)    保留2位小数
+     */
     // getFinalPrice(price) {
     //   return '¥' + price.toFixed(2)
     // }
@@ -76,6 +81,7 @@ const app = new Vue({
       }, 0)
     }
   },
+  //　过滤器
   filters: {
     showPrice(price) {
       return '¥' + price.toFixed(2)
