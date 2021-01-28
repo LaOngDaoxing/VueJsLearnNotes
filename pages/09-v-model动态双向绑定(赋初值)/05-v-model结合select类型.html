@@ -27,7 +27,7 @@
   <hr>
   <p>3、select下拉框——值动态双向绑定（赋初值）</p>
   <select name="abc" v-model="fruits2" multiple>
-    <option v-for="item in originFruits" :value="item" >{{item}}</option>
+    <option v-for="item in originFruits2" :value="item" >{{item}}</option>
   </select>
   <h2>您的爱好是: {{fruits2}}</h2>
 </div>
@@ -44,7 +44,7 @@
       fruits: [],
       fruits2: [], 
       // 值动态双向绑定（赋初值）
-      originFruits: ['篮球', '足球', '乒乓球', '羽毛球', '台球', '高尔夫球']
+      originFruits2: ['樱桃', '荔枝', '芒果', '火龙果']
     }
   })
 </script>
