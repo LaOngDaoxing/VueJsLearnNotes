@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>06-v-model修饰符的使用</title>
 </head>
 <body>
 
 <div id="app">
-  <!--1.修饰符: lazy-->
+  <p>1、lazy修饰符可以让数据在失去焦点或者回车时才会更新</p>
   <input type="text" v-model.lazy="message">
   <h2>{{message}}</h2>
 
-
-  <!--2.修饰符: number-->
+  <p>2、number修饰符可以让在输入框中输入的内容自动转成数字类型</p>
   <input type="number" v-model.number="age">
   <h2>{{age}}-{{typeof age}}</h2>
 
-  <!--3.修饰符: trim-->
+  <p>3、trim修饰符可以过滤内容左右两边的空格</p>
   <input type="text" v-model.trim="name">
   <h2>您输入的名字:{{name}}</h2>
 </div>
