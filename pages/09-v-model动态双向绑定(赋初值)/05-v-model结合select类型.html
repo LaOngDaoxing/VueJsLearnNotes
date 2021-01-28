@@ -29,13 +29,13 @@
   <select name="abc" v-model="fruits2" multiple>
     <option v-for="item in originFruits2" :value="item" >{{item}}</option>
   </select>
-  <h2>您的爱好是: {{fruits2}}</h2>
+  <h2>您选择的水果是:{{fruits2}}</h2>
   <hr>
   <p>4、select下拉框——值动态双向绑定（赋初值）</p>
   <select name="abc" v-model="fruits3" multiple>
     <option v-for="item in originFruits3" :value="item.id" >{{item.text}}</option>
   </select>
-  <h2>您的爱好是: {{fruits3}}</h2>
+  <h2>您选择的水果是: {{fruits3}}</h2>
 </div>
 
 <script src="../../static/document/js/vue/vue.js"></script>
