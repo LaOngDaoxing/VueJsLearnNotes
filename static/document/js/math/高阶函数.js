@@ -10,6 +10,8 @@
             2、map
             3、reduce
               作用：对数组中所有的内容进行汇总
+ *@代码示例：              
+      let newNumArr = oldNumArr.filter(n => n < 100).map(n => n * 2).reduce((pre, n) => pre + n);
  */
 const oldNumArr = [10, 20, 111, 222, 444, 40, 50]
 
@@ -34,9 +36,6 @@ let newNumArr1 = new2Nums.reduce(function (preValue, n) {
 }, 0)
 console.log("一、演示过程结果--"+newNumArr1);
 
-
-// let newNumArr = oldNumArr.filter(n => n < 100).map(n => n * 2).reduce((pre, n) => pre + n);
-// console.log(newNumArr);
 /**---------------------------- 二、完整代码 ----------------------------*/
 let newNumArr2 = oldNumArr.filter(function (n) {
   // （1）需求: 取出所有小于100的数字
