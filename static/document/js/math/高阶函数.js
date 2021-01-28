@@ -11,6 +11,7 @@
             3、数组Arr.reduce(第一个参数是回调函数,第二个参数一般初始值为0)
               作用：对数组中所有的内容进行汇总
  *@代码示例：              
+      // numsArr[本次]=n
       let newNumArr = oldNumArr.filter(n => n < 100).map(n => n * 2).reduce((pre, n) => pre + n);
  */
 const oldNumArr = [10, 20, 111, 222, 444, 40, 50]
@@ -34,7 +35,7 @@ let newNumArr1 = new2Nums.reduce(function (preValue, n) {
   // （3）需求:将所有new2Nums数字相加,得到最终的结果
   return preValue + n
 }, 0)
-// ————注解reduce执行过程
+// ————注解reduce执行过程，其中参数preValue是传入并return的结果，new2Nums[本次]=n
 // 第一次: preValue 0,n 20
 // 第二次: preValue 20,n 40
 // 第二次: preValue 60,n 80
