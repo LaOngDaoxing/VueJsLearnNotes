@@ -84,10 +84,13 @@ const app = new Vue({
       // return totalPrice
 
       /**
-       * @Description：写法4、高阶函数
+       * @Description：写法4、高阶函数reduce
        * @Use高阶函数：
                 3、数组Arr.reduce(第一个参数是回调函数,第二个参数一般初始值为0)
-                  作用：对数组中所有的内容进行汇总
+                    reduce的第一个参数回调函数(preValue, n){
+                      return 的结果赋给preValue
+                    }
+                    作用：对数组中所有的内容进行汇总
        */
       return this.books.reduce(function (preValue, book) {
         return preValue + book.price * book.count
