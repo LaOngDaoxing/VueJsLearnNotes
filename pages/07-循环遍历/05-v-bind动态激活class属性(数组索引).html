@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>05-v-bind动态激活class属性(数组索引)</title>
   <style>
     .active {
       color: red;
@@ -12,13 +12,13 @@
 <body>
 
 <div id="app">
+  <!--二、v-bind动态绑定激活class属性(数组索引)-->
   <ul>
-    <li v-for="(item, index) in movies"
-        :class="{active: currentIndex === index}"
-        @click="liClick(index)">
-      {{index}}.{{item}}
+    <li v-for="(item, index) in movies" :class="{active: index===currentIndex}" @click="itemClick(index)">
+      {{item}}-{{index+1}}
     </li>
-
+  </ul>
+  <ul>
     <!--<li :class="{active: 0===currentIndex}"></li>-->
     <!--<li :class="{active: 1===currentIndex}"></li>-->
     <!--<li :class="{active: 2===currentIndex}"></li>-->
@@ -35,7 +35,7 @@
       currentIndex: 0
     },
     methods: {
-      liClick(index) {
+      itemClick(index) {
         this.currentIndex = index
       }
     }
