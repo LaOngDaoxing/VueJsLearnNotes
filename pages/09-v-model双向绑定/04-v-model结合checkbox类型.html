@@ -7,23 +7,25 @@
 <body>
 
 <div id="app">
-  <p>1.checkbox单选框</p>
+  <p>1、checkbox单选框</p>
   <label for="agree">
     <input type="checkbox" id="agree" v-model="isAgree">同意协议
   </label>
   <h2>您选择的是: {{isAgree}}</h2>
   <button :disabled="!isAgree">下一步</button>
   <hr>
-  <p>2.checkbox多选框</p>
+  <p>2、checkbox多选框</p>
   <input type="checkbox" value="篮球" v-model="hobbies">篮球
   <input type="checkbox" value="足球" v-model="hobbies">足球
   <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
   <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
   <h2>您的爱好是: {{hobbies}}</h2>
-
+  <hr>
+  <p>3、checkbox多选框——值绑定</p>
   <label v-for="item in originHobbies" :for="item">
-    <input type="checkbox" :value="item" :id="item" v-model="hobbies">{{item}}
+    <input type="checkbox" :value="item" :id="item" v-model="hobbies2">{{item}}
   </label>
+  <h2>您的爱好是: {{hobbies2}}</h2>
 </div>
 
 <script src="../../static/document/js/vue/vue.js"></script>
@@ -36,6 +38,8 @@
       isAgree: false, 
       // 多选框 数组类型
       hobbies: [], 
+      hobbies2: [], 
+      // 值绑定
       originHobbies: ['篮球', '足球', '乒乓球', '羽毛球', '台球', '高尔夫球']
     }
   })
