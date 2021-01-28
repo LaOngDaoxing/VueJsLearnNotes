@@ -30,6 +30,12 @@
     <option v-for="item in originFruits2" :value="item" >{{item}}</option>
   </select>
   <h2>您的爱好是: {{fruits2}}</h2>
+  <hr>
+  <p>4、select下拉框——值动态双向绑定（赋初值）</p>
+  <select name="abc" v-model="fruits3" multiple>
+    <option v-for="item in originFruits3" :value="item.id" >{{item.text}}</option>
+  </select>
+  <h2>您的爱好是: {{fruits3}}</h2>
 </div>
 
 <script src="../../static/document/js/vue/vue.js"></script>
@@ -42,9 +48,12 @@
       fruit: '香蕉',
       // 多选框 数组类型
       fruits: [],
-      fruits2: [], 
+      
       // 值动态双向绑定（赋初值）
-      originFruits2: ['樱桃', '荔枝', '芒果', '火龙果']
+      originFruits2: ['樱桃', '荔枝', '芒果', '火龙果'],
+      fruits2: [],
+      originFruits3: [{id:'yingtao',text:'樱桃'},{id:'lizhi',text:'荔枝'},{id:'mangguo',text:'芒果'},{id:'huolongguo',text:'火龙果'}],
+      fruits3: []
     }
   })
 </script>
