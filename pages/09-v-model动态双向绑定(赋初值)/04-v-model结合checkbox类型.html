@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>04-v-model结合checkbox类型</title>
 </head>
 <body>
 
@@ -21,7 +21,7 @@
   <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
   <h2>您的爱好是: {{hobbies}}</h2>
   <hr>
-  <p>3、checkbox多选框——值双向绑定（赋初值）</p>
+  <p>3、checkbox多选框——值动态双向绑定（赋初值）</p>
   <label v-for="item in originHobbies" :for="item">
     <input type="checkbox" :value="item" :id="item" v-model="hobbies2">{{item}}
   </label>
@@ -39,7 +39,7 @@
       // 多选框 数组类型
       hobbies: [], 
       hobbies2: [], 
-      // 值双向绑定（赋初值）
+      // 值动态双向绑定（赋初值）
       originHobbies: ['篮球', '足球', '乒乓球', '羽毛球', '台球', '高尔夫球']
     }
   })
