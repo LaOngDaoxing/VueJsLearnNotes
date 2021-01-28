@@ -34,7 +34,7 @@ const app = new Vue({
   },
   methods: {
     /**
-     * @Description：由于需要使用过滤器filters，此方法getFinalPrice(price)弃用
+     * @Description：由于html页面价格需要使用过滤器filters，此methods中的方法getFinalPrice(price)弃用
      * @UseFun：
               toFixed(2)    保留2位小数
      */
@@ -51,6 +51,7 @@ const app = new Vue({
       this.books.splice(index, 1)
     }
   },
+  // computed: 计算属性()，有缓存
   computed: {
     totalPrice() {
       // 1.普通的for循环
@@ -81,7 +82,11 @@ const app = new Vue({
       }, 0)
     }
   },
-  //　过滤器
+  /**
+   * @Description：过滤器
+   * CoseSteps：
+              html页面价格使用  {{变量price | 过滤器filters的方法showPrice(price)}}
+   */
   filters: {
     showPrice(price) {
       return '¥' + price.toFixed(2)
