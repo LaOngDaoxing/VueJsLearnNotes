@@ -8,12 +8,18 @@
 
 <div id="app">
   <ul>
+    <!--语法糖/简写写法（v-bind的语法糖/简写是:）-->
     <li v-for="item in letters" :key="item">{{item}}</li>
   </ul>
 </div>
 
 <script src="../js/vue.js"></script>
 <script>
+  /**
+   * 
+   * BrowerConsole：
+            app.letters.splice(从哪个位置开始，准备删除几个元素，将要插入的元素)
+   */ 
   const app = new Vue({
     el: '#app',
     data: {
