@@ -54,14 +54,18 @@ const app = new Vue({
   // computed: 计算属性()，有缓存
   computed: {
     totalPrice() {
-      // 1.普通的for循环
+      /**
+       * @Description：写法1、普通的for循环
+       */
       // let totalPrice = 0
       // for (let i = 0; i < this.books.length; i++) {
       //   totalPrice += this.books[i].price * this.books[i].count
       // }
       // return totalPrice
 
-      // 2.for (let i in this.books)
+      /**
+       * @Description：写法2、for (let i in this.books)
+       */
       // let totalPrice = 0
       // for (let i in this.books) {
       //   const book = this.books[i]
@@ -70,13 +74,18 @@ const app = new Vue({
       //
       // return totalPrice
 
-      // 3.for (let i of this.books)
+      /**
+       * @Description：写法3、for (let i of this.books)
+       */
       // let totalPrice = 0
       // for (let item of this.books) {
       //   totalPrice += item.price * item.count
       // }
       // return totalPrice
 
+      /**
+       * @Description：写法4、
+       */
       return this.books.reduce(function (preValue, book) {
         return preValue + book.price * book.count
       }, 0)
@@ -85,7 +94,7 @@ const app = new Vue({
   /**
    * @Description：过滤器
    * CoseSteps：
-              html页面价格使用  {{变量price | 过滤器filters的方法showPrice(price)}}
+              html页面价格使用  {{变量价格 | 过滤器filters的方法showPrice(变量价格)}}
    */
   filters: {
     showPrice(price) {
