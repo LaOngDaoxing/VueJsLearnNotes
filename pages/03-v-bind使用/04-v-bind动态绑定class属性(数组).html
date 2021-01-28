@@ -28,7 +28,7 @@
   <h2 class="large" :class="getClasses1()">今天天气不错</h2>
   <h2 class="large" :class="getClasses2()">今天天气不错</h2>
   <hr>
-  <!--二、-->
+  <!--二、数组索引动态激活class-->
   <ul>
     <li v-for="(item, index) in movies" :class="{active: index===currentIndex}" @click="itemClick(index)">
       {{item}}-{{index+1}}
