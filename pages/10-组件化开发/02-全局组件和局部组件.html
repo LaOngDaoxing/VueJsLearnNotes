@@ -18,7 +18,7 @@
 
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
-  // 1.创建组件构造器
+  // 1、创建组件构造器对象
   const cpnC = Vue.extend({
     template: `
       <div>
@@ -28,16 +28,15 @@
     `
   })
 
-  // 2.注册组件(全局组件, 意味着可以在多个Vue的实例下面使用)
+  // 2.1、注册全局组件
   // Vue.component('cpn', cpnC)
-
-  // 疑问: 怎么注册的组件才是局部组件了?
 
   const app = new Vue({
     el: '#app',
     data: {
       message: '你好啊'
     },
+    // 2.2、在Vue实例中的注册局部组件components
     components: {
       // cpn使用组件时的标签名
       cpn: cpnC
@@ -48,6 +47,5 @@
     el: '#app2'
   })
 </script>
-
 </body>
 </html>
