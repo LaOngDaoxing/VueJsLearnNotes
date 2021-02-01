@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>07-组件中的数据存放data(return类型值)</title>
 </head>
 <body>
 
@@ -28,16 +28,16 @@
   }
   Vue.component('cpn', {
     template: '#cpn',
-    // data() {
-    //   return {
-    //   // html标签中多次使用分离式组件模版cpn，调用的数据（是不同内存地址）
-    //     counter: 0
-    //   }
-    // },
     data() {
-      // html标签中多次使用分离式组件模版cpn，调用的数据（是同一内存地址）
-      return obj
+      return {
+      // html标签中多次使用分离式组件模版cpn，调用的数据（是不同内存地址）
+        counter: 0
+      }
     },
+    // data() {
+    //   // html标签中多次使用分离式组件模版cpn，调用的数据（是同一内存地址）
+    //   return obj
+    // },
     methods: {
       increment() {
         this.counter++
