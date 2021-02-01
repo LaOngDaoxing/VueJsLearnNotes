@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>07-组件中的数据存放data(return类型值)</title>
+</head>
+<body>
+
+<!--组件实例对象-->
+<div id="app">
+  <cpn></cpn>
+  <cpn></cpn>
+  <cpn></cpn>
+</div>
+<!--分离式组件模版写法（2）template标签-->
+<template id="cpn">
+  <div>
+    <h2>当前计数: {{counter}}</h2>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+  </div>
+</template>
+<script src="../../static/document/js/vue/vue.js"></script>
+<script>
+  // 1.注册组件
+  const obj = {
+    counter: 0
+  }
+  Vue.component('cpn', {
+    template: '#cpn',
+    data() {
+      // html标签中多次使用分离式组件模版cpn；函数data()内，每次运行，都会在栈/内存中，创建新的内存地址来保存return的变量{}
+      return {
+        counter: 0
+      }
+    },
+    data() {
+      // html标签中多次使用分离式组件模版cpn；调用函数data()内，return内存地址不变的变量obj   
+      return obj
+    },
+    methods: {
+      increment() {
+        this.counter++
+      },
+      decrement() {
+        this.counter--
+      }
+    }
+  })
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊'
+    }
+  })
+</script>
+
+<script>
+  /**
+   * @Description：演示函数aFun()内，return内存地址改变的变量{}
+   */ 
+  function aFun() {
+    // 函数aFun()内，每次运行，都会在栈/内存中，创建新的内存地址来保存return的变量{}
+    return {
+      name: 'why',
+      age: 18
+    }
+  }
+  // 内存地址改变的变量simBObj1、simBObj2、simBObj3，指向的都是内存地址改变的变量{}
+  let simAObj1 = aFun()
+  let simAObj2 = aFun()
+  let simAObj3 = aFun()
+
+  console.log(simAObj1);
+  simAObj1.name = 'kobe'
+  console.log(simAObj2);
+  console.log(simAObj3);
+  /**
+   * @Description：演示函数bFun()内，return内存地址不变的变量simBObj
+   */ 
+  const simBObj = {
+    name: 'why',
+    age: 18
+  }
+  
+  function bFun() {
+    // 函数bFun()内，return内存地址不变的变量simBObj
+    return simBObj
+  }
+  // 内存地址改变的变量simBObj1、simBObj2、simBObj3，指向的都是内存地址不变的变量simBObj
+  let simBObj1 = bFun()
+  let simBObj2 = bFun()
+  let simBObj3 = bFun()
+
+  console.log(simBObj1);
+  simBObj1.name = 'kobe'
+  console.log(simBObj2);
+  console.log(simBObj3);
+</script>
+</body>
+</html>
