@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>08-组件通信-父组件向子组件传递数据</title>
 </head>
 <body>
 
 <div id="app">
-  <!--<cpn v-bind:cmovies="movies"></cpn>-->
-  <!--<cpn cmovies="movies" cmessage="message"></cpn>-->
-
+  <p>一、必须使用v-bind: 或其语法糖: 来绑定变量</p>
+  <p>1、未使用v-bind: 或其语法糖:</p>
+  <cpn cmovies="movies" cmessage="message"></cpn>
+  <p>2、使用v-bind: 或其语法糖:</p>
+  <cpn v-bind:cmovies="movies" :cmessage="message"></cpn>
   <cpn :cmessage="message" :cmovies="movies"></cpn>
 </div>
+<hr>
 
-
-
+<!--分离式组件模版写法（2）template标签-->
 <template id="cpn">
   <div>
     <ul>
@@ -26,29 +28,11 @@
 
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
-  // 父传子: props
+  // 子组件
   const cpn = {
     template: '#cpn',
-    // props: ['cmovies', 'cmessage'],
-    props: {
-      // 1.类型限制
-      // cmovies: Array,
-      // cmessage: String,
-
-      // 2.提供一些默认值, 以及必传值
-      cmessage: {
-        type: String,
-        default: 'aaaaaaaa',
-        required: true
-      },
-      // 类型是对象或者数组时, 默认值必须是一个函数
-      cmovies: {
-        type: Array,
-        default() {
-          return []
-        }
-      }
-    },
+    // 父组件向子组件传递数据/在子组件中获取父组件的数据，使用 props
+    props: ['cmovies', 'cmessage'],
     data() {
       return {}
     },
@@ -56,7 +40,7 @@
 
     }
   }
-
+  // 父组件
   const app = new Vue({
     el: '#app',
     data: {

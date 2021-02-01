@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>08-组件通信-父组件向子组件传递数据(props数据验证)</title>
+</head>
+<body>
+
+<div id="app">
+  <p>一、必须使用v-bind: 或其语法糖: 来绑定变量</p>
+  <p>1、使用v-bind: 或其语法糖:</p>
+  <cpn v-bind:cmovies="movies" :cmessage="message"></cpn>
+  <cpn :cmessage="message" :cmovies="movies"></cpn>
+  <p>2、未使用v-bind: 或其语法糖:</p>
+  <cpn cmovies="movies" cmessage="message"></cpn>
+</div>
+<hr>
+
+
+<template id="cpn">
+  <div>
+    <ul>
+      <li v-for="item in cmovies">{{item}}</li>
+    </ul>
+    <h2>{{cmessage}}</h2>
+  </div>
+</template>
+
+<script src="../../static/document/js/vue/vue.js"></script>
+<script>
+  // 父传子: props
+  const cpn = {
+    template: '#cpn',
+    // props: ['cmovies', 'cmessage'],
+    props: {
+      // 1.类型限制
+      // cmovies: Array,
+      // cmessage: String,
+
+      // 2.提供一些默认值, 以及必传值
+      cmessage: {
+        type: String,
+        default: 'aaaaaaaa',
+        required: true
+      },
+      // 类型是对象或者数组时, 默认值必须是一个函数
+      cmovies: {
+        type: Array,
+        default() {
+          return []
+        }
+      }
+    },
+    data() {
+      return {}
+    },
+    methods: {
+
+    }
+  }
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊',
+      movies: ['海王', '海贼王', '海尔兄弟']
+    },
+    components: {
+      // ES6中属性/变量的增强写法
+      cpn
+    }
+  })
+</script>
+
+</body>
+</html>
