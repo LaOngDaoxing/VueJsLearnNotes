@@ -9,30 +9,50 @@
 <div id="app">
   <p>一、必须使用v-bind: 或其语法糖: 来绑定变量</p>
   <p>1、未使用v-bind: 或其语法糖:</p>
-  <cpn cmovies="movies" cmessage="message"></cpn>
-  <p>2、使用v-bind: 或其语法糖:</p>
-  <cpn v-bind:cmovies="movies" :cmessage="message"></cpn>
-  <cpn :cmessage="message" :cmovies="movies"></cpn>
+  <cpn1 cmovies="movies" cmessage="message"></cpn1>
+  <p>2、使用v-bind: 或其语法糖:，分离式组件模版写法（2）template标签——直接展示</p>
+  <cpn1 v-bind:cmovies="movies" :cmessage="message"></cpn1>
+  <p>3、使用v-bind: 或其语法糖:，分离式组件模版写法（2）template标签——遍历展示</p>
+  <cpn2 :cmessage="message" :cfruits="fruits"></cpn2>
 </div>
 <hr>
 
 <!--分离式组件模版写法（2）template标签-->
-<template id="cpn">
+<template id="cpn1">
   <div>
-    <ul>
-      <li v-for="item in cmovies">{{item}}</li>
-    </ul>
-    <h2>{{cmessage}}</h2>
+    <p>{{cmovies}}</p>
+    <h6>{{cmessage}}</h6>
   </div>
 </template>
-
+<!--分离式组件模版写法（2）template标签-->
+<template id="cpn2">
+  <div>
+    <ul>
+      <li v-for="item in cfruits">{{item}}</li>
+    </ul>
+    <h5>{{cmessage}}</h5>
+  </div>
+  
+</template>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
-  // 子组件
-  const cpn = {
-    template: '#cpn',
+    // 子组件
+    const cpn1 = {
+    template: '#cpn1',
     // 使用选项props来声明，父组件向子组件传递的数据/子组件从父组件接收到的数据
     props: ['cmovies', 'cmessage'],
+    data() {
+      return {}
+    },
+    methods: {
+
+    }
+  }
+   // 子组件
+   const cpn2 = {
+    template: '#cpn2',
+    // 使用选项props来声明，父组件向子组件传递的数据/子组件从父组件接收到的数据
+    props: ['cfruits', 'cmessage'],
     data() {
       return {}
     },
@@ -45,11 +65,12 @@
     el: '#app',
     data: {
       message: '你好啊',
-      movies: ['海王', '海贼王', '海尔兄弟']
+      movies: ['海王', '海贼王', '海尔兄弟'],
+      fruits: ['樱桃', '荔枝', '芒果', '火龙果']
     },
     components: {
       // ES6中属性/变量的增强写法
-      cpn
+      cpn1,cpn2
     }
   })
 </script>

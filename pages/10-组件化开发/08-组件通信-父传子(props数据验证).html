@@ -8,15 +8,15 @@
 
 <div id="app">
   <p>一、必须使用v-bind: 或其语法糖: 来绑定变量</p>
-  <p>1、使用v-bind: 或其语法糖:</p>
+  <p>1、未使用v-bind: 或其语法糖:</p>
+  <cpn cmovies="movies" cmessage="message"></cpn>
+  <p>2、使用v-bind: 或其语法糖:</p>
   <cpn v-bind:cmovies="movies" :cmessage="message"></cpn>
   <cpn :cmessage="message" :cmovies="movies"></cpn>
-  <p>2、未使用v-bind: 或其语法糖:</p>
-  <cpn cmovies="movies" cmessage="message"></cpn>
 </div>
 <hr>
 
-
+<!--分离式组件模版写法（2）template标签-->
 <template id="cpn">
   <div>
     <ul>
@@ -31,7 +31,7 @@
   // 父传子: props
   const cpn = {
     template: '#cpn',
-    // props: ['cmovies', 'cmessage'],
+    // 使用选项props来声明，父组件向子组件传递的数据/子组件从父组件接收到的数据
     props: {
       // 1.类型限制
       // cmovies: Array,
