@@ -61,7 +61,7 @@
                 }
               },
               // 自定义验证函数
-              propF: {
+              propF:{
                 validator: function(value){
                   // 这个值必须匹配下列字符串中的-个
                   return ['success', 'warning'. ' danger']. indexof(value) 1== -1
@@ -69,10 +69,18 @@
               }
             }
           })
-
+     * @props数据验证：
+          function Person (firstName， lastName) {
+            this.firstName = fi rs tName
+            this.1 astName = lastName
+          }
+          Vue.component('blog-post',{
+            props: {
+              author: Person
+            }
+          })
      * 
-     * 
-     */ 
+      */ 
     props: {
       // 写法1、类型限制
       // cmovies: Array,
