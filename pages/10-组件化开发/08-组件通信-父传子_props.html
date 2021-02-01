@@ -5,7 +5,7 @@
   <title>08-组件通信-父组件向子组件传递数据</title>
 </head>
 <body>
-
+<!--———————————————————— 父组件模版 ————————————————————-->
 <div id="app">
   <p>一、必须使用v-bind: 或其语法糖: 来绑定变量</p>
   <p>1、未使用v-bind: 或其语法糖:</p>
@@ -17,6 +17,7 @@
 </div>
 <hr>
 
+<!--———————————————————— 子组件模版 ————————————————————-->
 <!--分离式组件模版写法（2）template标签-->
 <template id="cpn1">
   <div>
@@ -32,7 +33,6 @@
     </ul>
     <h5>{{cmessage}}</h5>
   </div>
-  
 </template>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
