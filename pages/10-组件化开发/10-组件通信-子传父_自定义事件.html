@@ -8,6 +8,7 @@
 
 <!--———————————————————— 父组件模版 ————————————————————-->
 <div id="app">
+  <p>在父组件模版中，通过v-on来监听子组件的自定义事件item-click。v-on:等号左侧的属性/变量名不建议驼峰命名=""，可以使用以-连接命名</p>
   <cpn @item-click="cpnClick"></cpn>
 </div>
 
@@ -26,6 +27,7 @@
   // 1.子组件
   const cpn = {
     template: '#cpn',
+    // 使用函数data()来初始化赋值，子组件数据
     data() {
       return {
         categories: [
@@ -36,9 +38,10 @@
         ]
       }
     },
+    // 使用选项methods来声明，子组件向父组件传递的事件item-click
     methods: {
       btnClick(item) {
-        // 发射事件: 自定义事件
+        // 在子组件中，通过$emit()来触发并传递事件: 自定义事件名item-click
         this.$emit('item-click', item)
       }
     }
@@ -50,10 +53,11 @@
     data: {
       message: '你好啊'
     },
+    // 2.2、在Vue实例中的注册局部组件components
     components: {
       cpn
     },
-    // 使用选项methods来声明，子组件向父组件传递的事件/父组件从子组件接收到的事件
+    // 使用选项methods来声明，父组件从子组件接收到的事件cpnClick
     methods: {
       cpnClick(item) {
         console.log('cpnClick', item);
