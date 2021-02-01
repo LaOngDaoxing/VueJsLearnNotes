@@ -20,6 +20,7 @@
 
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
+  // 子组件
   const cpn = {
     template: '#cpn',
     props: {
@@ -35,7 +36,7 @@
       }
     }
   }
-
+  // 父组件
   const app = new Vue({
     el: '#app',
     data: {
@@ -46,6 +47,7 @@
       },
       message: 'aaaaaa'
     },
+    // 2.2、在Vue实例中的注册局部组件components
     components: {
       cpn
     }
