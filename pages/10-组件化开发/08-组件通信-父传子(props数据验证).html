@@ -12,7 +12,6 @@
   <cpn cmovies="movies" cmessage="message"></cpn>
   <p>2、使用v-bind: 或其语法糖:</p>
   <cpn v-bind:cmovies="movies" :cmessage="message"></cpn>
-  <cpn :cmessage="message" :cmovies="movies"></cpn>
 </div>
 <hr>
 
@@ -22,7 +21,7 @@
     <ul>
       <li v-for="item in cmovies">{{item}}</li>
     </ul>
-    <h2>{{cmessage}}</h2>
+    <h5>{{cmessage}}</h5>
   </div>
 </template>
 
@@ -33,17 +32,19 @@
     template: '#cpn',
     // 使用选项props来声明，父组件向子组件传递的数据/子组件从父组件接收到的数据
     props: {
-      // 1.类型限制
+      // 写法1、类型限制
       // cmovies: Array,
       // cmessage: String,
 
-      // 2.提供一些默认值, 以及必传值
+      /**
+       * 写法2.1、提供一些默认值, 以及必传值
+       */ 
       cmessage: {
         type: String,
         default: 'aaaaaaaa',
         required: true
       },
-      // 类型是对象或者数组时, 默认值必须是一个函数
+      // 写法2.2、提供一些默认值, 以及必传值。类型是对象或者数组时, 默认值必须是一个函数
       cmovies: {
         type: Array,
         default() {
