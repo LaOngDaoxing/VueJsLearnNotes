@@ -14,8 +14,7 @@
 <!--子组件模板-->
 <template id="cpn">
   <div>
-    <button v-for="item in categories"
-            @click="btnClick(item)">
+    <button v-for="item in categories" @click="btnClick(item)">
       {{item.name}}
     </button>
   </div>
@@ -54,6 +53,7 @@
     components: {
       cpn
     },
+    // 使用选项methods来声明，子组件向父组件传递的数据/父组件从子组件接收到的数据
     methods: {
       cpnClick(item) {
         console.log('cpnClick', item);
