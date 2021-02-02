@@ -2,24 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>12-组件通信-父子组件通信案例input联动(watch实现)</title>
 </head>
 <body>
 
 <div id="app">
-  <cpn :number1="num1"
-       :number2="num2"
-       @num1change="num1change"
-       @num2change="num2change"/>
+  <cpn :number1="num1" :number2="num2" @num1change="num1change" @num2change="num2change"/>
 </div>
 
 <template id="cpn">
   <div>
-    <h2>props:{{number1}}</h2>
-    <h2>data:{{dnumber1}}</h2>
+    <h5>子传到父模版的数据props:{{number1}}</h5>
+    <h5>父传到子的数据data:{{dnumber1}}</h5>
     <input type="text" v-model="dnumber1">
-    <h2>props:{{number2}}</h2>
-    <h2>data:{{dnumber2}}</h2>
+    <h5>子传到父模版的数据props:{{number2}}</h5>
+    <h5>父传到子的数据data:{{dnumber2}}</h5>
     <input type="text" v-model="dnumber2">
   </div>
 </template>

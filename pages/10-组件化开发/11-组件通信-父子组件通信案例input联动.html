@@ -2,15 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>11-组件通信-父子组件通信案例(input联动)</title>
+  <title>11-组件通信-父子组件通信案例input联动</title>
 </head>
 <body>
 <!--———————————————————— 父组件模版 ————————————————————-->
 <div id="app">
-  <cpn :number1="num1"
-       :number2="num2"
-       @num1change="num1change"
-       @num2change="num2change"/>
+  <cpn :number1="num1" :number2="num2" @num1change="num1change" @num2change="num2change"/>
 </div>
 <!--———————————————————— 子组件模版 ————————————————————-->
 <template id="cpn">
@@ -25,23 +22,14 @@
     <input type="text" :value="dnumber2" @input="num2Input">
   </div>
 </template>
-<textarea style="border:0px;outline:none;height:260px;width: 1000px;">
+<textarea style="border:0px;outline:none;height:140px;width: 900px;">
   一、v-model动态双向绑定(赋初值)
   1、基本使用：直接绑定Vue实例中data数据
   2、组件使用：绑定子组件中data/computed数据
-  （1）----:value="dnumber1"----父传子（即将父组件Vue实例中的data数据num1值，传给子组件模版的:value="dnumber1"）----分析如下&gt
-      在浏览器控制台中，执行app.num1='最终将显示在浏览器页面input输入框中'，按先后顺序：
-      》首先将修改Vue实例中data响应式数据num1
-      》随即将修改html代码中&lth5&gtdata:{{dnumber1}}&lt/h5&gt
-      》然后将修改html代码中&ltinput type="text" :value="dnumber1"&gt
-      》最终将显示在浏览器页面input输入框中；
-  （2）----@input="num1Input"----子传父（即将子组件模版的:value="dnumber1"值，传给父组件Vue实例中的data数据num1）----分析如下&gt
-      在浏览器页面input输入框中，手动修改输入值，按先后顺序：
-      》首先@input绑定的方法，将监听并获取html代码中&ltinput type="text" :value="浏览器页面input输入框实时显示的值"&gt
-      》将上一步获取到的值，绑定到Vue实例中data响应式数据num1
-      》随即将修改html代码中&lth5&gtdata:{{dnumber1}}&lt/h5&gt
-      》然后将修改html代码中&ltinput type="text" :value="dnumber1"&gt
-      》最终将显示在浏览器页面input输入框中。
+  （1）:value="dnumber1"
+      父传子（即将父组件Vue实例中的data数据num1值，传给子组件模版的:value="dnumber1"）
+  （2）@input="num1Input"
+      子传父（即将子组件模版的:value="dnumber1"值，传给父组件Vue实例中的data数据num1,再传给父组件模版的props:{{number1}}）
 </textarea>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
