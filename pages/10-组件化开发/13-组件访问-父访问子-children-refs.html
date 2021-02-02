@@ -14,6 +14,7 @@
   <y-cpn></y-cpn>
 
   <cpn ref="aaa"></cpn>
+  <p>父访问子：在父组件模版中，添加监听按钮</p>
   <button @click="btnClick">按钮</button>
 </div>
 <!--子组件模版-->
@@ -27,6 +28,7 @@
     data: {
       message: '你好啊'
     },
+    // 父访问子：在父组件中，添加监听方法
     methods: {
       btnClick() {
         // 一、$children => 是数组类型
