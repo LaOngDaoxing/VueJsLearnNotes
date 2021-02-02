@@ -5,21 +5,37 @@
   <title>01-v-model的基本使用原理</title>
 </head>
 <body>
-<p>写法1、v-model实现动态双向绑定(赋初值)</p>
+<p>写法1、v-model实现input输入框，动态双向绑定(赋初值)</p>
 <div id="app1">
   <input type="text" v-model="message">
-  <h2>{{message}}</h2>
+  <h5>{{message}}</h5>
 </div>
-<p>写法2、</p>
+<hr>
+<p>写法2、:value实现把浏览器控制台中数据，最终将显示在浏览器页面input输入框中；@input实现把浏览器页面input输入框中数据，绑定到Vue实例中data响应式数据message</p>
 <div id="app2">
   <input type="text" :value="message" @input="valueChange">
-  <h2>{{message}}</h2>
+  <h5>{{message}}</h5>
 </div>
-<p>写法3、</p>
+<p>写法3、:value实现把浏览器控制台中数据，最终将显示在浏览器页面input输入框中；@input实现把浏览器页面input输入框中数据，绑定到Vue实例中data响应式数据message</p>
 <div id="app3">
   <input type="text" :value="message" @input="message = $event.target.value">
-  <h2>{{message}}</h2>
+  <h5>{{message}}</h5>
 </div>
+<textarea style="border:0px;outline:none;height:200px;width: 800px;">
+  （1）:value="message"分析如下——>
+      在浏览器控制台中，执行app1.message='最终将显示在浏览器页面input输入框中'，按先后顺序：
+      》首先将修改Vue实例中data响应式数据message
+      》随即将修改html代码中&lth5&gt{{message}}&lt/h5&gt
+      》然后将修改html代码中&ltinput type="text" :value="message"&gt
+      》最终将显示在浏览器页面input输入框中；
+  （2）@input="valueChange"、@input="message = $event.target.value"分析如下——>
+      在浏览器页面input输入框中，手动修改输入值，按先后顺序：
+      》首先@input绑定的方法，将监听html代码中&ltinput type="text" :value="浏览器页面input输入框实时显示的值"&gt
+      》将上一步获取到的值，绑定到Vue实例中data响应式数据message
+      》随即将修改html代码中&lth5&gt{{message}}&lt/h5&gt
+      》然后将修改html代码中&ltinput type="text" :value="message"&gt
+      》最终将显示在浏览器页面input输入框中。
+</textarea>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
   const app1 = new Vue({
