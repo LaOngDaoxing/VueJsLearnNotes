@@ -55,7 +55,7 @@
             dnumber2: this.number2
           }
         },
-        // 数据改变双向监听
+        // 监听数据，实现v-model动态双向绑定(赋初值)
         watch: {
           dnumber1(newValue) {
             this.dnumber2 = newValue * 2;
