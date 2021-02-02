@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>01-v-model的基本使用原理</title>
 </head>
 <body>
-<p>---双向绑定</p>
+<p>写法1、v-model实现动态双向绑定(赋初值)</p>
 <div id="app1">
   <input type="text" v-model="message">
   <h2>{{message}}</h2>
 </div>
+<p>写法2、</p>
 <div id="app2">
   <input type="text" :value="message" @input="valueChange">
   <h2>{{message}}</h2>
 </div>
+<p>写法3、</p>
 <div id="app3">
   <input type="text" :value="message" @input="message = $event.target.value">
   <h2>{{message}}</h2>
@@ -45,6 +47,5 @@
     }
   })
 </script>
-
 </body>
 </html>
