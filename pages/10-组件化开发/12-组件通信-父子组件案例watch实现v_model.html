@@ -45,7 +45,7 @@
       cpn: {
         template: '#cpn',
         props: {
-          // 应该通过父组件来改变number1的值，避免直接在子组件中使用v-model="number1"；正确应该为v-model="dnumber1"
+          // 应该通过父组件来改变number1的值，避免直接在子组件模版中使用v-model="number1"；正确应该在子组件模版中v-model="dnumber1"，然后在子组件中用data(){}/computed解决
           number1: Number,
           number2: Number
         },
