@@ -22,15 +22,15 @@
   <h5>{{message}}</h5>
 </div>
 <textarea style="border:0px;outline:none;height:210px;width: 800px;">
-  （1）:value="message"分析如下——>
+  （1）------------------:value="message"--------------------------------------------------分析如下&gt
       在浏览器控制台中，执行app1.message='最终将显示在浏览器页面input输入框中'，按先后顺序：
       》首先将修改Vue实例中data响应式数据message
       》随即将修改html代码中&lth5&gt{{message}}&lt/h5&gt
       》然后将修改html代码中&ltinput type="text" :value="message"&gt
       》最终将显示在浏览器页面input输入框中；
-  （2）@input="valueChange"、@input="message = $event.target.value"分析如下——>
+  （2）------------------@input="valueChange"、@input="message = $event.target.value"------分析如下&gt
       在浏览器页面input输入框中，手动修改输入值，按先后顺序：
-      》首先@input绑定的方法，将监听html代码中&ltinput type="text" :value="浏览器页面input输入框实时显示的值"&gt
+      》首先@input绑定的方法，将监听并获取html代码中&ltinput type="text" :value="浏览器页面input输入框实时显示的值"&gt
       》将上一步获取到的值，绑定到Vue实例中data响应式数据message
       》随即将修改html代码中&lth5&gt{{message}}&lt/h5&gt
       》然后将修改html代码中&ltinput type="text" :value="message"&gt

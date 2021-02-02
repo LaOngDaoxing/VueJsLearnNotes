@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>11-组件通信-父子组件通信案例</title>
 </head>
 <body>
-<textarea>一、v-model动态双向绑定(赋初值)
+<textarea style="border:0px;outline:none;height:60px;width: 800px;">
+  一、v-model动态双向绑定(赋初值)
   1、基本使用：直接绑定Vue实例中data数据
   2、组件使用：绑定子组件中data/computed数据
 </textarea>
@@ -29,7 +30,21 @@
     <input type="text" :value="dnumber2" @input="num2Input">
   </div>
 </template>
-
+<textarea style="border:0px;outline:none;height:210px;width: 800px;">
+  （1）------------------:value="message"--------------------------------------------------分析如下&gt
+      在浏览器控制台中，执行app1.message='最终将显示在浏览器页面input输入框中'，按先后顺序：
+      》首先将修改Vue实例中data响应式数据message
+      》随即将修改html代码中&lth5&gt{{message}}&lt/h5&gt
+      》然后将修改html代码中&ltinput type="text" :value="message"&gt
+      》最终将显示在浏览器页面input输入框中；
+  （2）------------------@input="valueChange"、@input="message = $event.target.value"------分析如下&gt
+      在浏览器页面input输入框中，手动修改输入值，按先后顺序：
+      》首先@input绑定的方法，将监听并获取html代码中&ltinput type="text" :value="浏览器页面input输入框实时显示的值"&gt
+      》将上一步获取到的值，绑定到Vue实例中data响应式数据message
+      》随即将修改html代码中&lth5&gt{{message}}&lt/h5&gt
+      》然后将修改html代码中&ltinput type="text" :value="message"&gt
+      》最终将显示在浏览器页面input输入框中。
+</textarea>
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
   // 父组件
