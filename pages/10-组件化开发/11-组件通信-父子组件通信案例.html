@@ -30,7 +30,7 @@
   1、基本使用：直接绑定Vue实例中data数据
   2、组件使用：绑定子组件中data/computed数据
   （1）----:value="dnumber1"----父传子（即将父组件Vue实例中的data数据num1值，传给子组件模版的:value="dnumber1"）----分析如下&gt
-      在浏览器控制台中，执行app1.num1='最终将显示在浏览器页面input输入框中'，按先后顺序：
+      在浏览器控制台中，执行app.num1='最终将显示在浏览器页面input输入框中'，按先后顺序：
       》首先将修改Vue实例中data响应式数据num1
       》随即将修改html代码中&lth5&gtdata:{{dnumber1}}&lt/h5&gt
       》然后将修改html代码中&ltinput type="text" :value="dnumber1"&gt
@@ -76,27 +76,35 @@
             dnumber2: this.number2
           }
         },
-        // 使用选项methods来声明，子组件向父组件传递的事件num1change
+        // 使用选项methods来声明，子组件向父组件传递的事件
         methods: {
           num1Input(event) {
-            // 1.将input中的value赋值到dnumber1中
+            /**
+             * 1.获取子组件模版input中的:value="dnumber1"，并将其赋值到子组件数据data(){dnumber1中}
+             * 2.子传父：在子组件中，通过$emit()来触发并向父组件传递事件: 自定义事件名num1change
+             */ 
             this.dnumber1 = event.target.value;
-
-            // 2.子传父：在子组件中，通过$emit()来触发并向父组件传递事件: 自定义事件名num1change
             this.$emit('num1change', this.dnumber1)
 
-            // 3.同时修改子组件中dnumber2的值
+            /**
+             * 3.赋新值到子组件数据data(){dnumber2中}；
+             * 4.子传父：在子组件中，通过$emit()来触发并向父组件传递事件: 自定义事件名num2change
+             */ 
             this.dnumber2 = this.dnumber1 * 2;
             this.$emit('num2change', this.dnumber2);
           },
           num2Input(event) {
-            // 1.将input中的value赋值到dnumber2中
+            /**
+             * 1.获取子组件模版input中的:value="dnumber2"，并将其赋值到子组件数据data(){dnumber2中}
+             * 2.子传父：在子组件中，通过$emit()来触发并向父组件传递事件: 自定义事件名num2change
+             */ 
             this.dnumber2 = event.target.value;
-
-            // 2.子传父：在子组件中，通过$emit()来触发并向父组件传递事件: 自定义事件名num2change
             this.$emit('num2change', this.dnumber2)
 
-            // 3.同时修改子组件中dnumber1的值
+            /**
+             * 3.赋新值到子组件数据data(){dnumber1中}；
+             * 4.子传父：在子组件中，通过$emit()来触发并向父组件传递事件: 自定义事件名num1change
+             */ 
             this.dnumber1 = this.dnumber2 / 2;
             this.$emit('num1change', this.dnumber1);
           }
