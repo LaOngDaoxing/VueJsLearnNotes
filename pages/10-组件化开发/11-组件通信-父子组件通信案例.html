@@ -5,14 +5,18 @@
   <title>Title</title>
 </head>
 <body>
-
+<textarea>一、v-model动态双向绑定(赋初值)
+  1、基本使用：直接绑定Vue实例中data数据
+  2、组件使用：绑定子组件中data/computed数据
+</textarea>
+<!--———————————————————— 父组件模版 ————————————————————-->
 <div id="app">
   <cpn :number1="num1"
        :number2="num2"
        @num1change="num1change"
        @num2change="num2change"/>
 </div>
-
+<!--———————————————————— 子组件模版 ————————————————————-->
 <template id="cpn">
   <div>
     <h2>props:{{number1}}</h2>
@@ -28,6 +32,7 @@
 
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
+  // 父组件
   const app = new Vue({
     el: '#app',
     data: {
@@ -42,6 +47,7 @@
         this.num2 = parseFloat(value)
       }
     },
+    // 子组件————2.2、在Vue实例中的注册局部组件components
     components: {
       cpn: {
         template: '#cpn',
