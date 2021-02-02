@@ -5,11 +5,6 @@
   <title>11-组件通信-父子组件通信案例</title>
 </head>
 <body>
-<textarea style="border:0px;outline:none;height:60px;width: 800px;">
-  一、v-model动态双向绑定(赋初值)
-  1、基本使用：直接绑定Vue实例中data数据
-  2、组件使用：绑定子组件中data/computed数据
-</textarea>
 <!--———————————————————— 父组件模版 ————————————————————-->
 <div id="app">
   <cpn :number1="num1"
@@ -20,29 +15,32 @@
 <!--———————————————————— 子组件模版 ————————————————————-->
 <template id="cpn">
   <div>
-    <h2>props:{{number1}}</h2>
-    <h2>data:{{dnumber1}}</h2>
+    <h5>props:{{number1}}</h5>
+    <h5>data:{{dnumber1}}</h5>
     <!--<input type="text" v-model="dnumber1">-->
     <input type="text" :value="dnumber1" @input="num1Input">
-    <h2>props:{{number2}}</h2>
-    <h2>data:{{dnumber2}}</h2>
+    <h5>props:{{number2}}</h5>
+    <h5>data:{{dnumber2}}</h5>
     <!--<input type="text" v-model="dnumber2">-->
     <input type="text" :value="dnumber2" @input="num2Input">
   </div>
 </template>
-<textarea style="border:0px;outline:none;height:210px;width: 800px;">
-  （1）------------------:value="message"--------------------------------------------------分析如下&gt
-      在浏览器控制台中，执行app1.message='最终将显示在浏览器页面input输入框中'，按先后顺序：
-      》首先将修改Vue实例中data响应式数据message
-      》随即将修改html代码中&lth5&gt{{message}}&lt/h5&gt
-      》然后将修改html代码中&ltinput type="text" :value="message"&gt
+<textarea style="border:0px;outline:none;height:260px;width: 1000px;">
+  一、v-model动态双向绑定(赋初值)
+  1、基本使用：直接绑定Vue实例中data数据
+  2、组件使用：绑定子组件中data/computed数据
+  （1）----:value="dnumber1"----父传子（即将父组件Vue实例中的data数据num1值，传给子组件模版的:value="dnumber1"）----分析如下&gt
+      在浏览器控制台中，执行app1.num1='最终将显示在浏览器页面input输入框中'，按先后顺序：
+      》首先将修改Vue实例中data响应式数据num1
+      》随即将修改html代码中&lth5&gtdata:{{dnumber1}}&lt/h5&gt
+      》然后将修改html代码中&ltinput type="text" :value="dnumber1"&gt
       》最终将显示在浏览器页面input输入框中；
-  （2）------------------@input="valueChange"、@input="message = $event.target.value"------分析如下&gt
+  （2）----@input="num1Input"----子传父（即将子组件模版的:value="dnumber1"值，传给父组件Vue实例中的data数据num1）----分析如下&gt
       在浏览器页面input输入框中，手动修改输入值，按先后顺序：
       》首先@input绑定的方法，将监听并获取html代码中&ltinput type="text" :value="浏览器页面input输入框实时显示的值"&gt
-      》将上一步获取到的值，绑定到Vue实例中data响应式数据message
-      》随即将修改html代码中&lth5&gt{{message}}&lt/h5&gt
-      》然后将修改html代码中&ltinput type="text" :value="message"&gt
+      》将上一步获取到的值，绑定到Vue实例中data响应式数据num1
+      》随即将修改html代码中&lth5&gtdata:{{dnumber1}}&lt/h5&gt
+      》然后将修改html代码中&ltinput type="text" :value="dnumber1"&gt
       》最终将显示在浏览器页面input输入框中。
 </textarea>
 <script src="../../static/document/js/vue/vue.js"></script>
@@ -55,7 +53,9 @@
       num2: 0
     },
     methods: {
+      // 默认传入的参数类型为string
       num1change(value) {
+        console.log("类型转换前，默认传入的的参数类型为----"+typeof value)
         this.num1 = parseFloat(value)
       },
       num2change(value) {
@@ -76,24 +76,28 @@
             dnumber2: this.number2
           }
         },
+        // 使用选项methods来声明，子组件向父组件传递的事件num1change
         methods: {
           num1Input(event) {
-            // 1.将input中的value赋值到dnumber中
+            // 1.将input中的value赋值到dnumber1中
             this.dnumber1 = event.target.value;
 
-            // 2.为了让父组件可以修改值, 发出一个事件
+            // 2.子传父：在子组件中，通过$emit()来触发并向父组件传递事件: 自定义事件名num1change
             this.$emit('num1change', this.dnumber1)
 
-            // 3.同时修饰dnumber2的值
-            this.dnumber2 = this.dnumber1 * 100;
+            // 3.同时修改子组件中dnumber2的值
+            this.dnumber2 = this.dnumber1 * 2;
             this.$emit('num2change', this.dnumber2);
           },
           num2Input(event) {
+            // 1.将input中的value赋值到dnumber2中
             this.dnumber2 = event.target.value;
+
+            // 2.子传父：在子组件中，通过$emit()来触发并向父组件传递事件: 自定义事件名num2change
             this.$emit('num2change', this.dnumber2)
 
-            // 同时修饰dnumber2的值
-            this.dnumber1 = this.dnumber2 / 100;
+            // 3.同时修改子组件中dnumber1的值
+            this.dnumber1 = this.dnumber2 / 2;
             this.$emit('num1change', this.dnumber1);
           }
         }
