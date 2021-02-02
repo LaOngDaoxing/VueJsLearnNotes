@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>13-组件访问-父访问子-children-refs</title>
 </head>
 <body>
-
+<!--父组件模版-->
 <div id="app">
   <cpn></cpn>
   <cpn></cpn>
@@ -16,7 +16,7 @@
   <cpn ref="aaa"></cpn>
   <button @click="btnClick">按钮</button>
 </div>
-
+<!--子组件模版-->
 <template id="cpn">
   <div>我是子组件</div>
 </template>
@@ -29,15 +29,16 @@
     },
     methods: {
       btnClick() {
-        // 1.$children
+        // 一、$children => 是数组类型
         // console.log(this.$children);
         // for (let c of this.$children) {
         //   console.log(c.name);
         //   c.showMessage();
         // }
+        // 不建议使用数组索引拿子组件的属性
         // console.log(this.$children[3].name);
 
-        // 2.$refs => 对象类型, 默认是一个空的对象 ref='bbb'
+        // 二、$refs => 是对象类型, 默认是一个空的对象。根据子组件模版中<cpn ref="aaa"></cpn>
         console.log(this.$refs.aaa.name);
       }
     },
@@ -46,12 +47,12 @@
         template: '#cpn',
         data() {
           return {
-            name: '我是子组件的name'
+            name: '我是子组件的属性name'
           }
         },
         methods: {
           showMessage() {
-            console.log('showMessage');
+            console.log('我是子组件的方法showMessage()');
           }
         }
       },
