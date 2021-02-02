@@ -23,6 +23,7 @@
 
 <script src="../../static/document/js/vue/vue.js"></script>
 <script>
+  // 父组件
   const app = new Vue({
     el: '#app',
     data: {
@@ -30,20 +31,23 @@
       num2: 0
     },
     methods: {
+      // 默认传入的参数类型为string
       num1change(value) {
+        console.log("类型转换前，默认传入的的参数类型为----"+typeof value)
         this.num1 = parseFloat(value)
       },
       num2change(value) {
         this.num2 = parseFloat(value)
       }
     },
+    // 子组件————2.2、在Vue实例中的注册局部组件components
     components: {
       cpn: {
         template: '#cpn',
         props: {
+          // 应该通过父组件来改变number1的值，避免直接在子组件中使用v-model="number1"；正确应该为v-model="dnumber1"
           number1: Number,
-          number2: Number,
-          name: ''
+          number2: Number
         },
         data() {
           return {
@@ -51,13 +55,14 @@
             dnumber2: this.number2
           }
         },
+        // 数据改变双向监听
         watch: {
           dnumber1(newValue) {
-            this.dnumber2 = newValue * 100;
+            this.dnumber2 = newValue * 2;
             this.$emit('num1change', newValue);
           },
           dnumber2(newValue) {
-            this.number1 = newValue / 100;
+            this.number1 = newValue / 2;
             this.$emit('num2change', newValue);
           }
         }
